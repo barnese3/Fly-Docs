@@ -115,4 +115,4 @@ This function takes 1 parameter:
 - **tag**: string  
 Tag to purge 
 
-And returns a Promise (string). 
+And returns a Promise (string[]). 
