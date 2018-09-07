@@ -90,7 +90,7 @@ And returns a Promise (boolean) - true if delete was successful.
 
 Replace tags for a given cache key. 
 
-`await cache.setTags(“key”, “tags”)` 
+`await cache.setTags(“key”, [“tag1”, "tag2", "tag3"])` 
 
 This function takes 2 parameters: 
 
