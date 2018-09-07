@@ -18,7 +18,7 @@ Make sure you have Fly installed: `npm install -g @fly/fly`
 
 Set a value at the specified key, with an optional ttl. 
 
-`await cache.set(“test-key”, “test-value”, ttl(optional))` 
+`await cache.set(“test-key”, “test-value”, ttl)` 
 
 This function takes 3 parameters: 
 
