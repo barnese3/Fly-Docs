@@ -1,6 +1,6 @@
 # Cache 
 
-This page walks you through how to get started using Fly’s Cache API, an API for accessing a regional, volatile cache. Data stored in `@fly/cache` can have an associated per-key time to live (TTL), and we will evict key data automatically after the elapsed TTL. We will also evict unused data when we need to reclaim space.  
+This page walks you through how to get started using Fly’s Cache API - an API for accessing a regional, volatile cache. Data stored in `@fly/cache` can have an associated per-key time to live (TTL), and we will evict key data automatically after the elapsed TTL. We will also evict unused data when we need to reclaim space.  
 
 Example use case: cache personalization data geographically close to individual users 
 
@@ -12,7 +12,9 @@ Make sure you have Fly installed: `npm install -g @fly/fly`
 
 `import cache from “@fly/cache”` 
 
-## Step 2: set 
+# Functions
+
+## set 
 
 Set a value at the specified key, with an optional ttl. 
 
@@ -31,7 +33,7 @@ Time to live (a number in seconds)
 
 And returns a Promise (boolean) - true if the set was successful. 
 
-## Step 3: get
+## get
 
 Get an ArrayBuffer value (or null) from the cache. 
 
@@ -44,7 +46,7 @@ The key to get
 
 And returns a Promise (ArrayBuffer) - raw bytes stored for provided key or null if empty. 
 
-## Step 4: getString 
+## getString 
 
 Get a string value (or null) from the cache. 
 
@@ -57,7 +59,7 @@ The key to get
 
 And returns a Promise (any) - data stored at the key, or null if none exists. 
 
-## Step 5: expire 
+## expire 
 
 Add or overwrite a key's time to live (ttl). 
 
@@ -73,7 +75,7 @@ Expiration time remaining in seconds
 
 And returns a Promise (boolean) - true if ttl was successfully updated. 
 
-## Step 6: del 
+## del 
 
 Deletes the value (if any) at the specified key. 
 
@@ -86,7 +88,7 @@ Key to delete
 
 And returns a Promise (boolean) - true if delete was successful.
 
-## Step 7: setTags 
+## setTags 
 
 Replace tags for a given cache key. 
 
@@ -102,7 +104,7 @@ Tags to apply to key
 
 And returns a Promise (boolean) true if tags were successfully updated. 
 
-## Step 8: purgeTag 
+## purgeTag 
 
 Purges all cache entries with the given tag. 
 
