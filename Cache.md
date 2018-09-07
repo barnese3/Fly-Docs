@@ -8,7 +8,7 @@ Example use case: cache personalization data geographically close to individual 
 
 Make sure you have Fly installed: `npm install -g @fly/fly` 
 
-## Step 1: import the cache library 
+## Import the cache library 
 
 `import cache from “@fly/cache”` 
 
