@@ -2,7 +2,7 @@
 
 In this guidebook, you'll learn how to get up and running with Fly Edge Apps and how to use all of the wonderful features/libraries that make Edge development a breeze. 
 
-You'll learn how to build *and* deploy an application in a full development environment using modern JavaScript and our lightning fast Edge libraries where your content gets optimized *as* it’s delivered to your users.  
+You'll learn how to build *and* deploy an Edge application in a full development environment using modern JavaScript and our lightning fast Edge libraries where your content gets optimized *as* it’s delivered to your users.  
 
 Let's get started!  
 
@@ -24,7 +24,7 @@ Write some code to your index.js file: `fly.http.respondWith(()=> new Response("
 Start up the fly server using the command: `fly server`  
 See your app by visiting http://localhost:3000 in your browser.  
 
-TADA! You should see "My First Fly Edge App" when you visit your browser. So, what's even happening here you might ask?   
+TADA! You should see "My First Fly Edge App" when you visit your browser. But, what's even happening here?  
 
 ## How it works
 
@@ -50,7 +50,7 @@ cache.set(“key”, “value”, ttl)
 ``` 
 ...are both using the Cache API efficiently. We’ll learn more about Fly’s Cache API (add link) in upcoming pages... 
 
-**Below are a couple of basic example functions that use some of Fly Edge App’s most popular features/libraries. These should help you get your app off the ground and start exploring!** 
+**Below are a couple of basic example functions that use some of Fly’s most popular features/libraries. These should help you get your app off the ground and start exploring!** 
 
 ### Fetch content from anywhere, optimize/customize it and then display it in your app 
 
@@ -60,11 +60,11 @@ By specifying a files property in your `.fly.yml` file, it's possible to use `fe
 
 ```javascript
 # .fly.yml 
-app: my-online-store 
+app: my-app
 config: 
     foo: bar 
 files: 
-    - example-file.txt
+    - exampleFile.txt
 ```
 
 The `app` property is your fly.io app name. This can be omitted, but it’s useful for deployment purposes. The `config` property will be arbitrary settings for your app, which are accessible in your code via the global variable `app.config`. 
@@ -74,13 +74,13 @@ To access any files under the `files` property, simply use the `fetch` method:
 ```javascript
 // index.js 
 fly.http.respondWith(async function(){ 
-    const response = await fetch("file://example-file.txt") 
+    const response = await fetch("file://exampleFile.txt") 
     response.headers.set("content-type", "text/html") 
     return response 
 })
 ``` 
 
-The `example-file.txt` is now available to customize and display, however you’d like.  
+The `exampleFile.txt` is now available to customize and display, however you’d like.  
 
 ## Resize and Optimize Images
 
@@ -88,16 +88,19 @@ Use Fly's Image API to enable responsive images and deliver the *exact* images y
 
 ```javascript
 import { Image } from “@fly/image” 
-const response = await fetch("http://example.com/images/balloon.jpg") 
-const original = new Image(await resp.arrayBuffer()) 
-let image = original.resize(500).withoutEnlargement() 
-const accept = req.headers.get("accept") || "" 
-if (accept.includes("webp")) { 
-   image = image.webp() 
-   resp.headers.set("content-type", "image/webp")
-} 
-image = await image.toImage() 
-return new Response(image.data, resp)
+
+fly.http.respondWith(async function(req){ 
+	const response = await fetch("http://example.com/images/balloon.jpg") 
+	const original = new Image(await response.arrayBuffer()) 
+	let image = original.resize(500).withoutEnlargement() 
+	const accept = req.headers.get("accept") || "" 
+	if (accept.includes("webp")) { 
+	   image = image.webp() 
+	   response.headers.set("content-type", "image/webp")
+	} 
+	image = await image.toImage() 
+	return new Response(image.data, response)
+})
 ```
 
 This function fetches an image from an external source (you could also fetch a local image by storing that image in your app and retrieving it via `fetch("file://balloon.jpg")`). Either way, fetching with Fly is *very* fast. This function then creates a new Fly image instance and stores the image’s binary data for speedy inputs and outputs. It then resizes the output image to 500px (so long as the input image is larger). Next, it converts the image to the `webp` format for image compression and fast loading time. Then, it applies all of our changes and creates a new image instance. Finally, it creates an HTTP Response object and displays the image. 
@@ -118,7 +121,7 @@ Create your app from the command line - `fly apps create [name]`. Name is option
 
 ### 3. Set your app property  
 
-After you create your fly app, you will see something like... *App blue-flower-1972 created! Add it to your .fly.yml like: `app: blue-flower-1972`.* Navigate to your .fly.yml file and set your app property to your new app name.  
+After you create your Fly app, you will see something like... *'App blue-flower-1972 created! Add it to your .fly.yml like: `app: blue-flower-1972`'.* Navigate to your `.fly.yml` file and set your app property to your new app name.  
 
 ### 4. Deploy!  
 
@@ -149,12 +152,12 @@ Check out your app by visiting ***app-name.edgeapp.net***.
 
 * Your code is distributed instantly(-ish) across our global fleet of servers.
 
-Congrats! You now have a simple Fly app that fetches files and optimizes images. 
+Congrats! You now have a simple Fly Edge App that fetches files and optimizes images. 
 
 ## What else can I do with my Fly Edge App? 
 
 The power of Fly also allows you to add unlimited hostnames with a simple POST using our hostname API, put your Glitch project on a custom domain, build a global application load balancer, test locally using fly test, deliver http requests with unbelievable low latency using fly.cache, connect to any Heroku app, improve your Google Lighthouse Scores and more!
 
-Next up: Cache API (add link) 
+### Next up: Cache API (add link) 
 
  
