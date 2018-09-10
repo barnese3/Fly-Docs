@@ -18,7 +18,8 @@ Serving cached data and resources is *easily* much faster than traveling to the 
 
 ## How does it work? 
 
-The major difference between caching with Fly and caching with other CDN’s is - *simplicity*. Setting it up is as easy as writing a few lines of JavaScript.  
+The major difference between caching with Fly and caching with other CDN’s is - *simplicity*. Setting it up is as easy as writing a few lines of JavaScript. 
+ 
 Fly's cache is available to you as a key-value store. You simply set a key, assign a value for that key, and (optionally) set a TTL. Data stored in `@fly/cache` can have an associated per-key time to live (TTL), and we will evict key data automatically after the elapsed TTL. We will also evict unused data when we need to reclaim space.
 
 ## Before you begin
