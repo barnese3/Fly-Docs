@@ -52,7 +52,7 @@ cache.set(“key”, “value”, ttl)
 
 **Below are a couple of basic example functions that use some of Fly’s most popular features/libraries. These should help you get your app off the ground and start exploring!** 
 
-### Fetch content from anywhere, optimize/customize it and then display it in your app 
+## Fetch content from anywhere, optimize/customize it and then display it in your app 
 
 Create a `.fly.yml` file to specify properties such as your application's name, configuration settings, and files. By default, Fly will read your `.fly.yml` file in your current working directory.   
 
