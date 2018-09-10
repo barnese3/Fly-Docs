@@ -140,11 +140,10 @@ You’ll do this by checking the cache for the **key** associated with that vide
 Your key will be a string equal to whatever unique identifier you want to assign to the value (the video). 
 
 ```javascript 
-`import cache from “@fly/cache”`
+import cache from “@fly/cache”
  
-
 fly.http.respondWith(async function(){ 
-    let key = "www.example.com/videos/header-video” 
+    let key = "www.example.com/videos/header-video"
     let resp = await cache.get( key ) 
 
     if( resp ) {  
@@ -167,7 +166,7 @@ Notice the importance of the async/await keywords here. All Fly requests use the
 If we don't find a value at the requested key, we need to get it and set it in the cache. So, our function would look something like this instead: 
 
 ```javascript 
-`import cache from “@fly/cache”`
+import cache from “@fly/cache”
 
 fly.http.respondWith(async function(){ 
     let key = "www.example.com/videos/header-video” 
