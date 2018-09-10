@@ -158,6 +158,6 @@ Congrats! You now have a simple Fly Edge App that fetches files and optimizes im
 
 The power of Fly also allows you to add unlimited hostnames with a simple POST using our hostname API, put your Glitch project on a custom domain, build a global application load balancer, test locally using fly test, deliver http requests with unbelievable low latency using fly.cache, connect to any Heroku app, improve your Google Lighthouse Scores and more!
 
-### Next up: Cache API (add link) 
+#### Next up: Cache API (add link) 
 
  
