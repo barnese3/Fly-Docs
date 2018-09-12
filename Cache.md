@@ -30,7 +30,7 @@ Make sure you have Fly installed: `npm install -g @fly/fly`
 
 `import cache from “@fly/cache”` 
 
-# List of functions associated with cache
+# List of functions associated with `cache`
 
 ## get
 
@@ -41,7 +41,7 @@ Get an ArrayBuffer value (or null) from the cache.
 This function takes 1 parameter:  
 
 - **key**: string  
-The key to get
+the key to get
 
 And returns a Promise (ArrayBuffer) - raw bytes stored for provided key or null if empty. 
 
@@ -54,7 +54,7 @@ Get a string value (or null) from the cache.
 This function takes 1 parameter:  
 
 - **key**: string  
-The key to get 
+the key to get 
 
 And returns a Promise (any) - data stored at the key, or null if none exists. 
 
@@ -67,13 +67,15 @@ Set a value at the specified key, with an optional ttl.
 This function takes 3 parameters: 
 
 - **key**: string  
-The key to add or overwrite 
+the key to add or overwrite 
 
 - **value**: string or ArrayBuffer  
-Data to store at the specified key, up to 2MB 
+data to store at the specified key, up to 2MB 
 
-- **ttl** (optional): number  
-Time to live (a number in seconds) 
+- **options** (optional) 
+⋅⋅* **ttl** (time to live): a number in seconds 
+⋅⋅* **tags**: string[] 
+⋅⋅* **onlyIfEmpty**: boolean 
 
 And returns a Promise (boolean) - true if the set was successful. 
 
@@ -86,10 +88,10 @@ Add or overwrite a key's time to live (ttl).
 This function takes 2 parameters: 
 
 - **key**: string  
-The key to modify 
+the key to modify 
 
 - **ttl**: number  
-Expiration time remaining in seconds 
+expiration time remaining in seconds 
 
 And returns a Promise (boolean) - true if ttl was successfully updated. 
 
@@ -102,7 +104,7 @@ Deletes the value (if any) at the specified key.
 This function takes 1 parameter: 
 
 - **key**: string  
-Key to delete 
+key to delete 
 
 And returns a Promise (boolean) - true if delete was successful.
 
@@ -115,10 +117,10 @@ Replace tags for a given cache key.
 This function takes 2 parameters: 
 
 - **key**: string  
-The key to modify 
+the key to modify 
 
 - **tags**: string[]  
-Tags to apply to key 
+tags to apply to key 
 
 And returns a Promise (boolean) true if tags were successfully updated. 
 
@@ -131,7 +133,7 @@ Purges all cache entries with the given tag.
 This function takes 1 parameter: 
 
 - **tag**: string  
-Tag to purge 
+tag to purge 
 
 And returns a Promise (string[]). 
 
