@@ -160,7 +160,7 @@ This function takes 2 parameters:
 - **key**: string   
 Key to set an expiration for 
 
-- **ttl**: number 
+- **ttl**: number  
 time to live (a number in seconds) 
 
 And returns a Promise (boolean) - true if the expire was successful. 
@@ -183,7 +183,7 @@ Additionally, when the server returns a response, it also emits a collection of 
 
 Caching was created to improve app performance. The goal of response object caching is to eliminate the need to constantly send and receive requests and responses. Therefore, this method of response caching ultimately reduces the number of network round-trips and network bandwidth requirements. 
 
-#### Up Next: global cache API
+#### Up Next: global cache API (add link)
  
 
  
