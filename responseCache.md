@@ -38,7 +38,7 @@ Get a Response object from the cache.
 
 This function takes 1 parameter:   
 
-- **key**: string 
+- **key**: string  
 cache key to get 
 
 And returns a Promise (Response & object) - The response associated with the key, or null if empty. 
@@ -51,7 +51,7 @@ Gets Request metatadata from the cache.
 
 This function takes 1 parameter:   
 
-- **key**: string
+- **key**: string  
 cache key to get metadata for 
 
 And returns a Promise in the form of the Response’s metadata with properties: 
@@ -72,10 +72,10 @@ This function takes 3 parameters:
 - **key**: string   
 cache key to set 
 
-- **resp**: response 
+- **resp**: response  
 the response to cache 
 
-- **options** (optional) 
+- **options** (optional)  
 	- **ttl** (time to live): a number in seconds 
 	- **tags**: string[] 
 	- **skipCacheHeaders**: string[] 
@@ -94,7 +94,7 @@ This function takes 3 parameters:
 - **key**: string   
 cache key to set
 
-- **meta**: metadata 
+- **meta**: metadata  
 metadata for the Response 
 	- **at**: number 
 	- **headers**: object 
@@ -102,7 +102,7 @@ metadata for the Response
 	- **tags**: string[] 
 	- **ttl**: number 
 
-- **options** (optional) 
+- **options** (optional)  
 	- **ttl** (time to live): a number in seconds 
 	- **tags**: string[] 
 	- **onlyIfEmpty**: boolean 
@@ -120,7 +120,7 @@ This function takes 2 parameters:
 - **key**: string   
 the key to modify 
 
-- **tags**: string[] 
+- **tags**: string[]  
 tags to apply to key 
 
 And returns a Promise (boolean) - true if tags were successfully updated. 
@@ -146,7 +146,7 @@ Deletes a Response object from the cache.
 
 This function takes 1 parameter:   
 
-- **key**: string   
+- **key**: string    
 key to delete 
 
 And returns a Promise (boolean) - true if the delete was successful. 
