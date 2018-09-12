@@ -76,10 +76,10 @@ cache key to set
 the response to cache 
 
 - **options** (optional) 
-⋅⋅* **ttl** (time to live): a number in seconds 
-⋅⋅* **tags**: string[] 
-⋅⋅* **skipCacheHeaders**: string[] 
-⋅⋅* **onlyIfEmpty**: boolean 
+	- **ttl** (time to live): a number in seconds 
+	- **tags**: string[] 
+	- **skipCacheHeaders**: string[] 
+	- **onlyIfEmpty**: boolean 
 
 And returns a Promise (boolean) - true if the set was successful. 
 
@@ -96,16 +96,16 @@ cache key to set
 
 - **meta**: metadata 
 metadata for the Response 
-⋅⋅* **at**: number 
-⋅⋅* **headers**: object 
-⋅⋅* **status**: number 
-⋅⋅* **tags**: string[] 
-⋅⋅* **ttl**: number 
+	- **at**: number 
+	- **headers**: object 
+	- **status**: number 
+	- **tags**: string[] 
+	- **ttl**: number 
 
 - **options** (optional) 
-⋅⋅* **ttl** (time to live): a number in seconds 
-⋅⋅* **tags**: string[] 
-⋅⋅* **onlyIfEmpty**: boolean 
+	- **ttl** (time to live): a number in seconds 
+	- **tags**: string[] 
+	- **onlyIfEmpty**: boolean 
 
 And returns a Promise (boolean) - true if the set was successful. 
 
