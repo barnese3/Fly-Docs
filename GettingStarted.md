@@ -1,8 +1,8 @@
 # Getting Started 
 
-In this guidebook, you'll learn how to get up and running with Fly Edge Apps and how to use all of the wonderful features/libraries that make Edge development a breeze. 
+Fly Edge Apps are written in JavaScript and deployed all over the world. In this guidebook, you'll learn how to get up and running with Fly Edge Apps and how to use all of the wonderful features/libraries that make Edge development a breeze. 
 
-You'll learn how to build *and* deploy an Edge application in a full development environment using modern JavaScript and our lightning fast Edge libraries where your content gets optimized *as* it’s delivered to your users.  
+You'll learn how to build *and* deploy an Edge application in a full development environment using modern JavaScript and our powerful libraries that make your apps lightning fast and optimizes your content *as* it’s delivered to your users.  
 
 Let's get started!  
 
@@ -50,7 +50,7 @@ cache.set(“key”, “value”, ttl)
 ``` 
 ...are both using the Cache API efficiently. We’ll learn more about Fly’s Cache API (add link) in upcoming pages... 
 
-**Below are a couple of basic example functions that use some of Fly’s most popular features/libraries. These should help you get your app off the ground and start exploring!** 
+**Below are a couple of example functions that use some of Fly’s most popular features/libraries. These should help you get your app off the ground and start exploring!** 
 
 ## Fetch content from anywhere, optimize/customize it and then display it in your app 
 
@@ -69,7 +69,7 @@ files:
 
 The `app` property is your fly.io app name. This can be omitted, but it’s useful for deployment purposes. The `config` property will be arbitrary settings for your app, which are accessible in your code via the global variable `app.config`. 
 
-To access any files under the `files` property, simply use the `fetch` method: 
+To access files under the `files` property, simply use the `fetch` method anywhere in your app: 
 
 ```javascript
 // index.js 
@@ -105,7 +105,7 @@ fly.http.respondWith(async function(req){
 
 This function fetches an image from an external source (you could also fetch a local image by storing that image in your app and retrieving it via `fetch("file://balloon.jpg")`). Either way, fetching with Fly is *very* fast. This function then creates a new Fly image instance and stores the image’s binary data for speedy inputs and outputs. It then resizes the output image to 500px (so long as the input image is larger). Next, it converts the image to the `webp` format for image compression and fast loading time. Then, it applies all of our changes and creates a new image instance. Finally, it creates an HTTP Response object and displays the image. 
 
-For a fully functional image API example, see the [bundled example app](https://github.com/superfly/fly/blob/master/apps/watermark-image/index.js).
+For a fully functional image API example, see this [bundled example app](https://github.com/superfly/fly/blob/master/apps/watermark-image/index.js).
 
 ## Deploy your Edge App
 
@@ -138,7 +138,7 @@ Deploying v1 globally, should be updated in a few seconds.
 
 ```  
 
-Check out your app by visiting ***app-name.edgeapp.net***. 
+Check out your new Fly Edge App by visiting ***app-name.edgeapp.net***. 
 
 ### How deployment works 
 
