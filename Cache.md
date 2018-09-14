@@ -10,11 +10,11 @@ This page walks you through how to get started using Fly’s Cache API - an API 
 
 ## Overview 
 
-Caching is one of the main features of Fly Edge Apps that make them fast. The idea behind caching is that is significantly reduces the amount of work that your app’s server has to do, ultimately speeding your app up for those visiting it. 
+Caching is one of the main features of Fly Edge Apps that make them fast and powerful. The idea behind caching at the Edge is to *significantly* reduce the amount of work that your app’s server has to do when a user requests it, ultimately speeding your app up for those visiting it. 
 
-Fly was designed to speed up the process of making HTTP requests and delivering data from the server to your user. Alternatively, our Cache API was introduced for the purpose of eliminating those requests in the first place. The goal here is to store data in Fly's global cache, and users will recieve that data from whichever Edge server is geographically closest to them.
+Fly was designed to speed up the process of making HTTP requests and delivering data from the server to your user. Alternatively, our Cache API was introduced for the purpose of eliminating those requests in the first place. The goal here is to store data in Fly's global cache, and users will recieve that data from whichever Edge server is geographically closest to them. [Click here](https://fly.io/docs/#datacenter-locations) for a list of Fly’s current data centers. 
 
-Serving cached data and resources is *easily* much faster than traveling to the origin server every single time a user makes a request. The ability to cache and reuse previously fetched resources is a critical aspect of optimizing any app for optimal performance.
+Serving cached data and resources is *easily* much faster than traveling to the origin server every single time a user makes a request. The ability to cache and reuse previously fetched resources is a critical aspect of optimizing an app for maximum performance.
 
 ## How does it work? 
 
@@ -40,8 +40,7 @@ Get an ArrayBuffer value (or null) from the cache.
 
 This function takes 1 parameter:  
 
-- **key**: string  
-the key to get
+- **key**: string --> the key to get
 
 And returns a Promise (ArrayBuffer) - raw bytes stored for provided key or null if empty. 
 
@@ -53,8 +52,7 @@ Get a string value (or null) from the cache.
 
 This function takes 1 parameter:  
 
-- **key**: string  
-the key to get 
+- **key**: string --> the key to get 
 
 And returns a Promise (any) - data stored at the key, or null if none exists. 
 
@@ -66,16 +64,14 @@ Set a value at the specified key, with an optional ttl.
 
 This function takes 3 parameters: 
 
-- **key**: string  
-the key to add or overwrite 
+- **key**: string --> the key to add or overwrite 
 
-- **value**: string or ArrayBuffer  
-data to store at the specified key, up to 2MB 
+- **value**: string or ArrayBuffer --> data to store at the specified key, up to 2MB 
 
 - **options** (optional) 
-⋅⋅* **ttl** (time to live): a number in seconds 
-⋅⋅* **tags**: string[] 
-⋅⋅* **onlyIfEmpty**: boolean 
+    * **ttl** (time to live): a number in seconds 
+    * **tags**: string[] 
+    * **onlyIfEmpty**: boolean 
 
 And returns a Promise (boolean) - true if the set was successful. 
 
@@ -87,11 +83,9 @@ Add or overwrite a key's time to live (ttl).
 
 This function takes 2 parameters: 
 
-- **key**: string  
-the key to modify 
+- **key**: string --> the key to modify 
 
-- **ttl**: number  
-expiration time remaining in seconds 
+- **ttl**: number --> expiration time remaining in seconds 
 
 And returns a Promise (boolean) - true if ttl was successfully updated. 
 
@@ -103,8 +97,7 @@ Deletes the value (if any) at the specified key.
 
 This function takes 1 parameter: 
 
-- **key**: string  
-key to delete 
+- **key**: string --> key to delete 
 
 And returns a Promise (boolean) - true if delete was successful.
 
@@ -116,13 +109,11 @@ Replace tags for a given cache key.
 
 This function takes 2 parameters: 
 
-- **key**: string  
-the key to modify 
+- **key**: string --> the key to modify 
 
-- **tags**: string[]  
-tags to apply to key 
+- **tags**: string[] --> tags to apply to key 
 
-And returns a Promise (boolean) true if tags were successfully updated. 
+And returns a Promise (boolean) - true if tags were successfully updated. 
 
 ## purgeTag 
 
@@ -132,14 +123,13 @@ Purges all cache entries with the given tag.
 
 This function takes 1 parameter: 
 
-- **tag**: string  
-tag to purge 
+- **tag**: string --> tag to purge 
 
 And returns a Promise (string[]). 
 
 ## How to implement caching into your app 
 
-The first thing your app should do is check whether or not you already have the user's request cached. For example, if your user is requesting a video from your app, you’ll want them to first check the cache for that video, rather than loading an entirely fresh video from the server, which could lead to less than ideal loading time.  
+The first thing your app should do is check whether or not you already have the requested data cached. For example, if your user is requesting a video from your app, you’ll want them to first check the cache for that video, rather than loading an entirely fresh video from the origin server, which could lead to less than ideal loading time.  
 
 You’ll do this by checking the cache for the **key** associated with that video, and calling the `get()` function (because we’re looking for a binary value).  
 
@@ -150,9 +140,9 @@ import cache from “@fly/cache”
  
 fly.http.respondWith(async function(){ 
     let key = "www.example.com/videos/header-video"
-    let resp = await cache.get( key ) 
+    let resp = await cache.get(key) 
 
-    if( resp ) {  
+    if(resp) {  
         resp.headers.set("Fly-Cache", "HIT")  
         return new Response(resp) 
     } else { 
@@ -161,7 +151,7 @@ fly.http.respondWith(async function(){
 }) 
 ```  
 
-The key here is the url where the video lives. There’s nothing special about this key, just a unique identifier that we’re choosing to associate with our video for caching and retrieving.
+The key here is the url where the video lives. There’s nothing special about this key, just a unique identifier that we’re choosing to associate with our video for caching and retrieving purposes.
 
 If we find a value at that key, then we’ll send it to the user ... and that’s it! The user will quickly receive the cached version of this video. They’ll be able to click play and almost *instantly* start watching. 
 
@@ -169,16 +159,16 @@ Notice the importance of the `async/await` keywords here. All Fly requests use t
  
 *Note, if we were searching for cached data in the form of HTML text or similar, we’d want to use the `getString()` function instead.*
 
-If we *don't* find a value at the requested key, then we need to fetch that value from the origin and `set` it in our cache:
+If we *don't* find a value at the requested key, then we need to fetch that value from the origin server and `set` it in our cache:
 
 ```javascript 
 import cache from “@fly/cache”
 
 fly.http.respondWith(async function(){ 
     let key = "www.example.com/videos/header-video"
-    let resp = await cache.get( key )
+    let resp = await cache.get(key)
 
-    if( resp ) {  
+    if(resp) {  
         resp.headers.set("Fly-Cache", "HIT")  
         return new Response(resp) 
     } else { 
@@ -190,7 +180,7 @@ fly.http.respondWith(async function(){
 }) 
 ```
 
-Fly Edge Apps add the `Fly-Cache` header to HTTP Responses. `Fly-Cache: HIT` means that our request was served by the CDN (from the cache), not the origin server. `Fly-Cache: MISS` means that your request was not served by the CDN, but rather served from the origin server. A CDN takes content and distributes that content in lots of places. It's an efficient way to store data on servers around the world and deliver content faster than from a single location. This is one of the features that makes Fly Edge Apps so unique and powerful.
+Fly Edge Apps add the `Fly-Cache` header to HTTP Responses. `Fly-Cache: HIT` means that our request was served by the CDN (from the cache), not the origin server. `Fly-Cache: MISS` means that your request was not served by the CDN, but rather served from the origin server. A CDN takes content and distributes that content in lots of places. It's an efficient way to store data on servers around the world and deliver content faster than from a single location. This is one of the features that makes Fly Edge Apps so fast and powerful.
 
 Ultimately, the function above checks the cache for our video, serves the video from the cache if it is found, or fetches the video from the origin and sets it in the cache for 24 hours, speeding it up for future users.
 
