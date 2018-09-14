@@ -4,7 +4,7 @@ The Fly global cache API, allows eventually consistent modifications to all cach
 
 ## Overview 
 
-Caching is one of the main features of Fly Edge Apps that make them fast. The idea behind caching is that is significantly reduces the amount of work that your app’s server has to do, ultimately speeding your app up for those visiting it. 
+Caching is one of the main features of Fly Edge Apps that make them fast and powerful. The idea behind caching at the Edge is to significantly reduce the amount of work that your app’s server has to do when a user requests it, ultimately speeding your app up for those visiting it.
 
 Fly's cache is regional, which is ideal for Edge Applications since most global caches vary tremendously between regions. But there can be shared content scattered around the world, and it's useful to be able to delete it all in one go. 
 
@@ -21,9 +21,9 @@ The general process of Fly’s global cache API is simplified below:
 
 So why eventually and not immediately? Two major reasons: **availability** and **scalability**.  
 
-Eventual consistency relies on having a distributed system (rather than a centralized one), hence the concept of globally distributed Edge servers. With strict consistency (immediate updates), you can only scale so far before things start to slow down. And scalability is important to support the load created by high volumes of traffic. Typically, high traffic volume requires numerous low latency servers handling requests. Eventually consistent servers implement read/write operations at a *much* lower latency than the latter … ultimately meaning that numerous low latency servers working together to deliver consistent data eventually is *much* faster and scalable than strict consistency, which can significantly impact the performance of your app.  
+Eventual consistency relies on having a distributed system (rather than a centralized one), hence the concept of globally distributed Edge servers. With strict consistency (immediate updates), you can only scale so far before things start to slow down. And scalability is important to support the load created by high volumes of traffic. Typically, high traffic volume requires numerous low latency servers handling requests. Eventually consistent servers implement read/write operations at a *much* lower latency than the latter ... ultimately meaning that numerous low latency servers working together to deliver consistent data eventually is *much* faster and scalable than strict consistency, which can significantly improve the performance of your app.  
 
-To sum up, if high scale and very low latency are both critical components for you and your app, eventual consistency is key. Eventual consistency trades “instant” updating for higher availability and faster client-side performance. These trade-offs allow us to provide the best possible experience to our users.
+To sum up, if high scale and very low latency are both critical components for you and your app, eventual consistency is key. Eventual consistency trades “instant” updating for higher availability and faster client-side performance. These trade-offs allow us to provide the best possible experience for our users.
 
 ## Before you begin  
 
@@ -43,8 +43,7 @@ Notifies all caches to delete data at the specified key.
 
 This function takes 1 parameter: 
 
-- **key**: string   
-the key to delete 
+- **key**: string --> the key to delete 
 
 And returns a Promise (boolean) - A promise that resolves as soon as the del notification is sent. Since regional caches are eventually consistent, this may return before every cache is updated. 
 
@@ -56,8 +55,7 @@ Notifies all regional caches to purge keys with the specified tag.
 
 This function takes 1 parameter: 
 
-- **tag**: string    
-the tag to purge 
+- **tag**: string --> the tag to purge 
 
 And returns a Promise (boolean) - A promise that resolves as soon as the purge notification is sent. Since regional caches are eventually consistent, this may return before every cache is updated. 
 
