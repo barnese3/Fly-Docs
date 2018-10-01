@@ -12,7 +12,7 @@ The `cache.global` API lets developers distribute cache notifications around the
 
 ## How it works  
 
-The general process of Fly’s global cache API is simplified below: 
+The process of Fly’s global cache API is simplified below: 
 
 1. You make changes to your cache using one of the `global` API methods (`del` or `purgeTag`) 
 2. You deploy to Fly servers, `fly deploy`, to apply changes 
@@ -21,7 +21,7 @@ The general process of Fly’s global cache API is simplified below:
 
 So why eventually and not immediately? Two major reasons: **availability** and **scalability**.  
 
-Eventual consistency relies on having a distributed system (rather than a centralized one), hence the concept of globally distributed Edge servers. With strict consistency (immediate updates), you can only scale so far before things start to slow down. And scalability is important to support the load created by high volumes of traffic. Typically, high traffic volume requires numerous low latency servers handling requests. Eventually consistent servers implement read/write operations at a *much* lower latency than the latter ... ultimately meaning that numerous low latency servers working together to deliver consistent data eventually is *much* faster and scalable than strict consistency, which can significantly improve the performance of your app.  
+Eventual consistency relies on having a distributed system (rather than a centralized one), hence the concept of globally distributed Edge servers. With strict consistency (immediate updates), you can only scale so far before things start to slow down. And scalability is important to support the load created by high volumes of traffic. Typically, high traffic volume requires numerous low latency servers handling requests. Eventually consistent servers implement read/write operations at a *much* lower latency than the latter ... ultimately meaning that numerous low latency servers working together to deliver consistent data eventually is *much* faster and more scalable than strict consistency, which can significantly improve the performance of your app.  
 
 To sum up, if high scale and very low latency are both critical components for you and your app, eventual consistency is key. Eventual consistency trades “instant” updating for higher availability and faster client-side performance. These trade-offs allow us to provide the best possible experience for our users.
 
