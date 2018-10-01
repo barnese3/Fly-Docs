@@ -18,41 +18,43 @@ The Fetch API provides a super clean way to do all the wonderful things that you
 
 Usually when there’s a permissions issue or something similar, `fetch()` will return a Promise in the form of a `TimeoutError` to indicate that a network error was encountered or that a value received is not of the expected type. A successful `fetch()` will include a `Response.ok` property value of `true`.
 
+### Syntax
+
 `fetch(req, init)`
 
 The fetch method takes 2 **parameters**: `req` and `init`
 
-***req***: RequestInfo
+***req***: RequestInfo  
 This parameter defines the resource that you wish to fetch. It can either be a direct URL string or a Request object for the resource you're fetching.
 
-***init***: FlyRequestInit (optional)
+***init***: FlyRequestInit (optional)  
 This parameter represents an options object containing any custom settings that you want to apply to the request. This parameter is optional and the possible options are:
 
-`body`: any body that you want to add to your request. This can be a Blob, BufferSource, FormData, string or null.
+* `body`: any body that you want to add to your request. This can be a Blob, BufferSource, FormData, string or null.
 
-`cache`:  the cache mode you want to use for the request, which will control how the request will interact with the browser's HTTP cache. This should be a RequestCache value. See [Request.cache](https://developer.mozilla.org/en-US/docs/Web/API/Request/cache) for available values.
+* `cache`:  the cache mode you want to use for the request, which will control how the request will interact with the browser's HTTP cache. This should be a RequestCache value. See [Request.cache](https://developer.mozilla.org/en-US/docs/Web/API/Request/cache) for available values.
 
-`credentials`: the request credentials you want to use for the request: `omit`, `same-origin`, or `include`.
+* `credentials`: the request credentials you want to use for the request: `omit`, `same-origin`, or `include`.
 
-`headers`: any headers you want to add to your request, contained within a `Headers` object or an object literal with `ByteString` values.
+* `headers`: any headers you want to add to your request, contained within a `Headers` object or an object literal with `ByteString` values.
 
-`integrity`: contains the subresource integrity value of the request. This will be in the form of a string.
+* `integrity`: contains the subresource integrity value of the request. This will be in the form of a string.
 
-`keepalive`: this option will be a boolean value which can be used to allow the request to outlive the page.
+* `keepalive`: this option will be a boolean value which can be used to allow the request to outlive the page.
 
-`method`: this option represents the Request method in the form of a string. For example, “get” or “post”.
+* `method`: this option represents the Request method in the form of a string. For example, “get” or “post”.
 
-`mode`: the mode you want to use for the request. For example, `cors`, `no-cors`, or `same-origin`.
+* `mode`: the mode you want to use for the request. For example, `cors`, `no-cors`, or `same-origin`.
 
-`redirect`: this option indicates which redirect mode to use. For example, `follow` will automatically follow redirects, `error` will abort with an error if a redirect occurs, and `manual` will handle redirects manually. The default is usually `follow`.
+* `redirect`: this option indicates which redirect mode to use. For example, `follow` will automatically follow redirects, `error` will abort with an error if a redirect occurs, and `manual` will handle redirects manually. The default is usually `follow`.
 
-`referrer`: this option is a string specifying `no-referrer`, `client`, or a URL. The default is `client`.
+* `referrer`: this option is a string specifying `no-referrer`, `client`, or a URL. The default is `client`.
 
-`referrerPolicy`: this option specifies the value of the referrer HTTP header: `no-referrer`, `no-referrer-when-downgrade`, `origin`, `origin-when-cross-origin` or `unsafe-url`.
+* `referrerPolicy`: this option specifies the value of the referrer HTTP header: `no-referrer`, `no-referrer-when-downgrade`, `origin`, `origin-when-cross-origin` or `unsafe-url`.
 
-`signal`: this option will be an `AbortSignal` object instance which allows you to communicate with a fetch request and abort it if desired via an `AbortController`.
+* `signal`: this option will be an `AbortSignal` object instance which allows you to communicate with a fetch request and abort it if desired via an `AbortController`.
 
-`timeout`: this option will be a number indicating the number of seconds the client will wait for a response from the server until a TimeoutError is raised.
+* `timeout`: this option will be a number indicating the number of seconds the client will wait for a response from the server until a TimeoutError is raised.
  
 The `fetch()` methods takes these parameters, issues an HTTP/HTTPS request and returns a **Promise** that resolves to a **Response** object.
 
