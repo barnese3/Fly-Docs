@@ -24,7 +24,7 @@ Let’s say you have a large web site that thousands, or even _millions_, of peo
 
 When this function makes origin requests, it adds standard proxy headers like `X-Forwarded-Host` and `X-Forwarded-For`. It can handle hostname forwarding, and even rewrites URLs before sending them off to the backend. It also passes headers from the original request to the origin. 
 
-![Proxy Diagram](images/proxy-diagram.png "proxy diagram")
+![Proxy Diagram](images/proxy-diagram-docs@2x.png "proxy diagram")
 
 ### Before you begin   
 
