@@ -50,9 +50,9 @@ Options and headers to control the origin request. This parameter is optional an
 
 * `headers`: this option will be in the form of an object representing headers to set on backend request. Each header accepts either a boolean or string. 
 
- * If set to `false`, strip header entirely before sending.  
- * `true` or `undefined` send the header through unmodified from the original request.  
- * `string` header values are sent as is. 
+	* If set to `false`, strip header entirely before sending.  
+	* `true` or `undefined` send the header through unmodified from the original request.  
+	* `string` header values are sent as is. 
 
 * `stripPath`: this options will be a string that says “replace this portion of URL path before making a request to the origin”. 
 
