@@ -18,6 +18,10 @@ The Fetch API provides a super clean way to do all the wonderful things that you
 
 Usually when there’s a permissions issue or something similar, `fetch()` will return a Promise in the form of a `TimeoutError` to indicate that a network error was encountered or that a value received is not of the expected type. A successful `fetch()` will include a `Response.ok` property value of `true`.
 
+### Before you begin  
+
+Make sure you have the latest version of Fly installed: `npm install -g @fly/fly`  
+
 ### Syntax
 
 `fetch(req, init)`
