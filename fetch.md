@@ -4,13 +4,13 @@ This page walks you through an impressive JavaScript feature that helps make Fly
 
 ## Overview
 
-Fly Edge Apps are written in JavaScript and deployed all over the world. And since they're JavaScript, you can make them do almost anything. They're especially good at pulling content from just about anywhere and then customizing that content on-the-fly … enter the significance of “fetching”.
+Fly Edge Apps are written in JavaScript and deployed all over the world. And since they're JavaScript, you can make them do almost anything. They're especially good at pulling content from just about anywhere and then customizing that content on-the-fly ... enter the significance of “fetching”.
  
-With Edge Apps, you can use the same exact `fetch()` method available in standard JavaScript, including the modern async/await syntax. This smooth method replaced that cringeworthy XMLHttpRequest (XHR) we used back in the day to make requests, interact with servers, and retrieve data from URL’s.
+Fetch is an easy way to interact with servers asynchronously. With Edge Apps, you can use the same exact `fetch()` method available in standard JavaScript, including the modern async/await syntax which makes it possible to send and receive data asynchronously in the background without reloading the page ... making your app feel fast and responsive. This smooth method replaced that cringeworthy XMLHttpRequest (XHR) we used back in the day to make requests, interact with servers, and retrieve data from URL’s.
 
 The Fetch API provides a super clean way to do all the wonderful things that you could do with XHR, plus more. It creates an entirely new way of making server requests ... filled with promises and a more powerful, flexible set of features.
 
-`fetch()` allows us to make network requests similar to the dreaded XMLHttpRequest. Only, instead of using callbacks, the Fetch API uses Promises, which enables simpler and cleaner usability without having to remember the complexity of the XMLHttpRequest API.
+`fetch()` allows us to make network requests similar to the dreaded XMLHttpRequest. Only, instead of using callbacks, the Fetch API uses Promises, meaning it uses JavaScript Promises to handle the results you get back from the server. This enables simpler and cleaner usability without having to remember the complexity of the XMLHttpRequest API.
 
 ## How it works 
 
