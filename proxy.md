@@ -20,9 +20,7 @@ It works by accepting requests for HTTP requests and providing responses, usuall
 
 Fly's `proxy` library generates a fetch-like function that makes requests to any given origin, very similarly to a reverse proxy. It can be particularly useful for load balancing (distributing the load to several web servers), caching static content (offloading web servers by caching content like pictures) and for compressing/optimizing content to speed up website load time. 
 
-Let’s say you have a large website that thousands, or even _millions_, of people want to see, but a single web server just can’t handle all that traffic. So, you decide to set up multiple servers and put a reverse proxy on the internet that will send users to whichever server is closest to them when they try to visit your site. This is part of how the Content Delivery Network (CDN) concept works. This method minimizes the distance between your visitors and your website's server. Overall, you want to direct all incoming requests to multiple servers, and a reverse proxy is the ideal way to accomplish this. 
-
-When this function makes origin requests, it adds standard proxy headers like `X-Forwarded-Host` and `X-Forwarded-For`. It also passes headers from the original request to the origin. 
+Let’s say you have a large website that thousands, or even _millions_, of people want to see, but a single web server just can’t handle all that traffic. So, you decide to set up multiple servers and put a reverse proxy on the internet that will send users to whichever server is closest to them when they try to visit your site. This is part of how the Content Delivery Network (CDN) concept works. This method minimizes the distance between your visitors and your website's server. Overall, you want to direct all incoming requests to multiple servers, and a reverse proxy is the ideal way to accomplish this.  
 
 ![Proxy Diagram](images/proxy-diagram-docs@2x.png "proxy diagram")
 
@@ -37,6 +35,8 @@ Make sure you have the latest version of Fly installed: `npm install -g @fly/fly
 ### Syntax 
 
 `proxy(origin, options)` 
+
+When this function makes origin requests, it adds standard proxy headers like `X-Forwarded-Host` and `X-Forwarded-For`. It also passes headers from the original request to the origin. 
 
 This method takes 2 **parameters**: `origin` and `options` 
 
@@ -88,8 +88,7 @@ fly.http.respondWith(function (req) {
 }) 
 ``` 
 
-This example is way more rare, it sends no host header at all. Usually you'd strip out `x-forwarded-host`, 
-since some origins don't like that. This function sends all traffic to an Amazon ELB, but never sends a host header: 
+This example is way more rare, it sends no host header at all. This function sends all traffic to an Amazon ELB, but never sends a host header: 
  
 ```javascript 
 const origin = proxy("https://elb1298.amazonaws.com", { 
