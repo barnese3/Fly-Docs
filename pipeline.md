@@ -16,7 +16,7 @@ The pipeline structure is outlined below:
 
 **Pipeline:** 
 
-Job 1  
+>Job 1  
     Step 1.1  
     Step 1.2  
     Step 1.3  
