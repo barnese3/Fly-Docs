@@ -10,25 +10,7 @@ The `pipeline()` method allows us to combine multiple fetches into a single func
 
 A “pipeline”, in software terms, is a set of several unique data transformations, linked together into one sequence, where the output of one transformation is the input of the next one. The sequence usually consists of several different functions, executed in parallel, with the output stream of one function being automatically fed in as the input stream of the next.  
 
-Overall, pipelines are made up of one or more “jobs”, where each job has its own set of instructions and its own outcome. These instructions can be tasks, scripts, or even references to external templates. The outcome of one job is used for the next job in the sequence.  
-
-The pipeline structure is outlined below: 
-
-**Pipeline:** 
-
-- Job 1  
-  - Step 1.1  
-  - Step 1.2  
-  - Step 1.3  
-    - Output --> Job 2  
-      - Step 2.1  
-      - Step 2.2  
-      - Step 2.3  
-        - Output --> Job 3  
-          - Step 3.1  
-          - Step 3.2  
-          - Step 3.3  
-            - Output --> Job 4... and so on  
+Overall, pipelines are made up of one or more “jobs”, where each job has its own set of instructions and its own outcome. These instructions can be tasks, scripts, or even references to external templates. The outcome of one job is used for the next job in the sequence.
 
 ## How it works 
 
