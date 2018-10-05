@@ -16,19 +16,19 @@ The pipeline structure is outlined below:
 
 **Pipeline:** 
 
-Job 1  
-&npsp;   &npsp;   &npsp;   &npsp;Step 1.1  
-&npsp;   &npsp;   &npsp;   &npsp;Step 1.2  
-&npsp;   &npsp;   &npsp;   &npsp;Step 1.3  
-Output --> Job 2  
-Step 2.1  
-Step 2.2  
-Step 2.3  
-Output --> Job 3  
-Step 3.1  
-Step 3.2  
-Step 3.3  
-Output --> Job 4... and so on  
+- Job 1  
+  - Step 1.1  
+  - Step 1.2  
+  - Step 1.3  
+    - Output --> Job 2  
+      - Step 2.1  
+      - Step 2.2  
+      - Step 2.3  
+        - Output --> Job 3  
+          - Step 3.1  
+          - Step 3.2  
+          - Step 3.3  
+            - Output --> Job 4... and so on  
 
 ## How it works 
 
